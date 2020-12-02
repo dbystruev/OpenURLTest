@@ -14,9 +14,10 @@ class ViewController: UIViewController {
     
     // MARK: - Methods
     func openURL() {
-        guard let url = urlTextFiled.text else { return }
-        if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
+        guard let urlString = urlTextFiled.text else { return }
+        if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
             urlTextFiled.resignFirstResponder()
+            print(#line, #function, "url =", url)
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
